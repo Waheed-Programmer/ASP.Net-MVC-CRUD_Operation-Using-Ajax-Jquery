@@ -7,6 +7,16 @@
         LoadEmploye();
     });
 
+    function EditEmploye(EmployeId) {
+
+    }
+
+    function deleteEmploye(EmployeId) {
+
+    }
+
+
+
     function LoadEmploye() {
         var BindEmploye = "";
         $.ajax({
@@ -25,7 +35,7 @@
                             '</td><td>' +
                             value.CityName +
                             '</td><td>' +
-                            '<input type="Button" value="edit " onclick="EditEmploye(' + value.EmployeId + ')">' +
+                            '<input type="Button" value="edit " onclick="EditEmploye(' + value.EmployeId + ')">||<input type="Button" value="delete " onclick="deleteEmploye(' + value.EmployeId + ')">' +
                             '</td></tr>';
                     });
                     $("#myTable").append(BindEmploye);
@@ -52,3 +62,27 @@
         </tr>
     </thead>    
     </table>
+<div class="container">
+    <div class="form-control col-lg-6">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="Name" id="textName" />
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="text" name="Age" id="textAge" />
+        </div>
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" name="Name" id="textName" />
+        </div>
+        <div class="form-group">
+
+            <input type="button" value="Add Employe" onclick="AddEmploye()" />
+        </div>
+        <div class="form-group">
+            
+            <input type="button" value="Reset" onclick="ResetEmploye()" />
+        </div>
+    </div>
+</div>
