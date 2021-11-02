@@ -61,7 +61,6 @@
             <PropertyRef Name="CityId" />
           </Key>
           <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="EmployeTables" Relationship="Self.FK_EmployeTable_CityTable" FromRole="CityTable" ToRole="EmployeTable" />
           <Property Name="CItyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>

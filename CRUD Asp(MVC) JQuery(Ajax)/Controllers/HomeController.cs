@@ -26,11 +26,9 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
                                Name = objemp.Name,
                                Age = objemp.Age,
                                CityId = objcities.CityId,
-                               Name= objcities.Name
+                               CItyName= objcities.CItyName
                            }
                            ).ToList();
-
-
             return Json(new { Success = true, data = employe }, JsonRequestBehavior.AllowGet);
         }
        
