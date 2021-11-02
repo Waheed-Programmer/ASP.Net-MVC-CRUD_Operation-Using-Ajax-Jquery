@@ -12,6 +12,16 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
         EmployeManagementEntities DB = new EmployeManagementEntities();
         public ActionResult Index()
         {
+            ViewBag.city = (from obj in DB.CityTables
+                            
+                            select new SelectListItem()
+                            {
+                                Text = obj.CItyName,
+                                Value = obj.CityId.ToString()
+                            }
+                            
+                            
+                            ).ToList();
             return View();
         }
         [HttpGet]

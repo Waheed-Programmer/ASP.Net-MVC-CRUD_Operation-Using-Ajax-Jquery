@@ -105,7 +105,7 @@
         </td>
         <td>
             
-            <input type="text" class="form-control" name="Name" id="textName" />
+           @Html.DropDownList("City",  ViewBag.City as IEnumerable<SelectListItem>, "Select Country", new { @class = "form-control" })
         </td>
         <td>
         <td>
