@@ -28,5 +28,6 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Models
         public virtual DbSet<CityTable> CityTables { get; set; }
         public virtual DbSet<EmployeTable> EmployeTables { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Employe> Employes { get; set; }
     }
 }

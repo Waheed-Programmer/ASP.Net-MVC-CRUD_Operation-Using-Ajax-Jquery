@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        LoadEmploye();
+    });
+
+    function AddEmploye() {
+        ViewModelEmploye = {
+            Id: $("#textEmployeId").val(),
+            Name: $("#textName").val(),
+            Email: $("#textEmail").val(),
+            Age: $("#textAge").val(),
+          
+        }
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            url: '/Employe/AddUpdateEmploye',
+            data: JSON.stringify(ViewModelEmploye),
+            datatype: 'JSON',
+            contentType: 'application/json, charset=utf-8',
+            success: function (data) {
+                if (data.Success) {
+                    alert(data.Message);
+                    LoadEmploye();
+                }
+
+            },
+            error: function (error) {
+                alert("There are sum error here")
+            }
+
+        })
+    }
+    function EditEmploye(EmployeId) {
+
+    }
+
+    function deleteEmploye(EmployeId) {
+
+    }
+
+
+
+    function LoadEmploye() {
+        var BindEmploye = "";
+        $.ajax({
+            async: true,
+            type: 'GET',
+            url: '/Home/GetEmploye',
+            datatype: 'JSON',
+            contentType: 'application/json, charset=utf-8',
+            success: function (response) {
+                if (response.success) {
+                    $.each(response.data, function (index, value) {
+                        BindEmploye = '<tr><td>' +
+                            value.Id +
+                            '</td><td>' +
+                            value.Name +
+                            '</td><td>' +
+                            value.Email +
+                            '</td><td>'+
+                            value.Age +                           
+                            '</td><td>' +
+                            '<input type="Button" value="edit " onclick="EditEmploye(' + value.EmployeId + ')">||<input type="Button" value="delete " onclick="deleteEmploye(' + value.EmployeId + ')">' +
+                            '</td></tr>';
+                    });
+                    $("#myTable").append(BindEmploye);
+                }
+            },
+            error: function () {
+                alert('There is some error occur')
+            }
+        })
+    }
+
+
+</script>
+<br />
+<br />
+<table class="table table-striped table-responsive" id="myTable">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+
+            <th>Name</th>
+            <th>Eamil</th>
+
+            <th>Age</th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+</table>
+<input type="hidden" value="0" id="textEmployeId" />
+<br />
+<br />
+<br />
+<table class="table table-striped table-responsive" id="myTable">
+
+
+    <tr>
+
+        <td>
+
+            <input type="text" class="form-control" placeholder="Enter Name" name="Name" id="textName" />
+        </td>
+        <td>
+
+            <input type="text" class="form-control" placeholder="Enter Email" name="Age" id="textEmail" />
+        </td>
+        <td>
+
+            <input type="text" class="form-control" placeholder="Enter Age" name="Age" id="textAge" />
+        </td>
+       
+        <td>
+        <td>
+
+        <td>
+            <input type="button" class="btn btn-primary mt-2" value="Add Employe" onclick="AddEmploye()" />
+            <input type="button" class="btn btn-success mt-2" value="Reset" onclick="ResetEmploye()" />
+        </td>
+
+    </tr>
+
+</table>
+
+

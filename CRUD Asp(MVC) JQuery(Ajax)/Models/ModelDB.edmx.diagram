@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="EmployeManagementModel.EmployeTable" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EmployeManagementModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="EmployeManagementModel.FK_EmployeTable_CityTable" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmployeManagementModel.Employe" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
