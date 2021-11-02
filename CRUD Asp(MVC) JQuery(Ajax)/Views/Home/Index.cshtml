@@ -1,12 +1,16 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         LoadEmploye();
     });
 
+    function AddEmploye() {
+
+
+    }
     function EditEmploye(EmployeId) {
 
     }
@@ -49,20 +53,7 @@
 
 
 </script>
-
-<table class="table table-striped table-responsive" id="myTable">
-    
-    <thead>
-        <tr>
-           
-            <th>Name</th>
-            <th>Age</th>
-            <th>City</th>
-            <th>Actions</th>
-        </tr>
-    </thead>    
-    </table>
-<div class="container">
+@*<div class="container">
     <div class="form-control col-lg-6">
         <div class="form-group">
             <label>Name</label>
@@ -81,8 +72,49 @@
             <input type="button" value="Add Employe" onclick="AddEmploye()" />
         </div>
         <div class="form-group">
-            
+
             <input type="button" value="Reset" onclick="ResetEmploye()" />
         </div>
     </div>
-</div>
+</div>*@<br /><br />
+<table class="table table-striped table-responsive" id="myTable">
+
+    <thead>
+        <tr>
+
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+</table>
+<br /><br /><br />
+<table class="table table-striped table-responsive" id="myTable">
+
+    
+    <tr>
+
+        <td>
+            
+            <input type="text" class="form-control" placeholder="Enter Name" name="Name" id="textName" />
+        </td>
+        <td>
+            
+            <input type="text" class="form-control" placeholder="Enter Age" name="Age" id="textAge" />
+        </td>
+        <td>
+            
+            <input type="text" class="form-control" name="Name" id="textName" />
+        </td>
+        <td>
+        <td>
+       
+        <td>
+            <input type="button" class="btn btn-primary mt-2" value="Add Employe" onclick="AddEmploye()" />
+            <input type="button" class="btn btn-success mt-2" value="Reset" onclick="ResetEmploye()" />
+        </td>
+       
+    </tr>
+  
+</table>
