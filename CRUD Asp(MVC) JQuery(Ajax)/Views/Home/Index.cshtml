@@ -8,6 +8,7 @@
     });
 
     function LoadEmploye() {
+        var BindEmploye = "";
         $.ajax({
             async: true,
             type: "GET",
@@ -15,8 +16,20 @@
             datatype: "JSON",
             contentType: "application/json, charset=utf-8",
             success: function (response) {
-
-            }
+                if (response.success) {
+                    $.each(response.data, function (index, value) {
+                        BindEmploye = '<tr><td>' +
+                            value.Name +
+                            '</td><td>' +
+                            value.Age +
+                            '</td><td>' +
+                            value.CityName +
+                            '</td><td>' +
+                            '<input type="Button" value="edit " onclick="EditEmploye(' + value.EmployeId + ')">' +
+                            '</td></tr>';
+                    })
+                }
+            },
             error: function () {
                 alert('There is some error occur')
             }

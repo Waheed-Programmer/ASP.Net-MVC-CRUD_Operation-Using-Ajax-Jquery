@@ -157,6 +157,7 @@
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Multimodel.cs" />
     <Compile Include="ViewModel\ViewModelEmploye.cs" />
   </ItemGroup>
   <ItemGroup>
