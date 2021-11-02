@@ -13,14 +13,8 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
         EmployeManagementEntities DB = new EmployeManagementEntities();
         public ActionResult Index()
         {
-            ViewBag.city = (from obj in DB.CityTables
-                            
-                            select new SelectListItem()
-                            {
-                                Text = obj.CItyName,
-                                Value = obj.CityId.ToString()
-                            }                
-                            ).ToList();
+            List<CityTable> DeptList = DB.CityTables.ToList();
+            ViewBag.city = new SelectList(DeptList, "CityId", "CItyName");
             return View();
         }
         [HttpGet]
@@ -43,7 +37,23 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
         [HttpPost]
         public JsonResult AddUpdateEmploye(ViewModelEmploye view)
         {
-            return Json("", JsonRequestBehavior.AllowGet);
+            string Message = "Data has been updated";
+            //EmployeTable objEmploye = new EmployeTable();
+            EmployeTable objEmploye = DB.EmployeTables.SingleOrDefault(model => model.EmoloyeId == view.EmoloyeId) ?? new EmployeTable();
+            objEmploye.EmoloyeId = view.EmoloyeId;
+            objEmploye.Name = view.Name;
+            objEmploye.Age = view.Age;
+            objEmploye.CityId = view.CityId;
+
+            if (objEmploye.EmoloyeId == 0)
+            {
+                Message = "Data has been Inserted";
+                DB.EmployeTables.Add(objEmploye);
+                DB.SaveChanges();
+            }
+            
+
+            return Json(new {Success=true,Message=Message }, JsonRequestBehavior.AllowGet);
         }
        
     }

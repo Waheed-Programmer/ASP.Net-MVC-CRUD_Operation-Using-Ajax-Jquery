@@ -7,9 +7,9 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.ViewModel
 {
     public class ViewModelEmploye
     {
-        public int EmployeId { get; set; }
+        public int EmoloyeId { get; set; }
         public string Name { get; set; }
-        public int Age { get; set; }
-        public int CityId { get; set; }
+        public Nullable<int> Age { get; set; }
+        public Nullable<int> CityId { get; set; }
     }
 }

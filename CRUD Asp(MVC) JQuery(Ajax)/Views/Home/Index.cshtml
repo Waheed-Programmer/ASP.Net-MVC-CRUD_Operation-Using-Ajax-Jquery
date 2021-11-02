@@ -23,7 +23,10 @@
             datatype: 'JSON',
             contentType: 'application/json, charset=utf-8',
             success: function (data) {
-
+                if (data.Success) {
+                    alert(data.Message);
+                    LoadEmploye();
+                }
 
             },
             error: function (error) {
