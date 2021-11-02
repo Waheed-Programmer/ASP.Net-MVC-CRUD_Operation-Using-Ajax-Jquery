@@ -8,8 +8,29 @@
     });
 
     function AddEmploye() {
+        ViewModelEmploye = {
+            EmployeId: $("#textEmployeId").val(),
+            Name: $("#textName").val(),
+            Age: $("#textAge").val(),
+            CityName: $("#City").val()
+        }
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            url: '/Home/AddUpdateEmploye',
+            data: JSON.stringify(ViewModelEmploye),
+            datatype: 'JSON',
+            contentType: 'application/json, charset=utf-8',
+            success: function (data) {
 
 
+            },
+            error: function (error) {
+                alert("There are sum error here")
+            }
+
+        })
     }
     function EditEmploye(EmployeId) {
 
@@ -53,30 +74,7 @@
 
 
 </script>
-@*<div class="container">
-    <div class="form-control col-lg-6">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="Name" id="textName" />
-        </div>
-        <div class="form-group">
-            <label>Age</label>
-            <input type="text" name="Age" id="textAge" />
-        </div>
-        <div class="form-group">
-            <label>City</label>
-            <input type="text" name="Name" id="textName" />
-        </div>
-        <div class="form-group">
-
-            <input type="button" value="Add Employe" onclick="AddEmploye()" />
-        </div>
-        <div class="form-group">
-
-            <input type="button" value="Reset" onclick="ResetEmploye()" />
-        </div>
-    </div>
-</div>*@<br /><br />
+<br /><br />
 <table class="table table-striped table-responsive" id="myTable">
 
     <thead>
@@ -89,6 +87,7 @@
         </tr>
     </thead>
 </table>
+<input type="hidden" value="0" id="textEmployeId" />
 <br /><br /><br />
 <table class="table table-striped table-responsive" id="myTable">
 

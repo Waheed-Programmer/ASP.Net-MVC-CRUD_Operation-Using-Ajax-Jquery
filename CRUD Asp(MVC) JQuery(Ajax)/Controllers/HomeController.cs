@@ -1,4 +1,5 @@
 ﻿using CRUD_Asp_MVC__JQuery_Ajax_.Models;
+using CRUD_Asp_MVC__JQuery_Ajax_.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,7 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
                             {
                                 Text = obj.CItyName,
                                 Value = obj.CityId.ToString()
-                            }
-                            
-                            
+                            }                
                             ).ToList();
             return View();
         }
@@ -40,6 +39,11 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
                            }
                            ).ToList();
             return Json(new { Success = true, data = employe }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult AddUpdateEmploye(ViewModelEmploye view)
+        {
+            return Json("", JsonRequestBehavior.AllowGet);
         }
        
     }
