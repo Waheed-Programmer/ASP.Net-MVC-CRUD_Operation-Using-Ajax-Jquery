@@ -54,24 +54,16 @@
         $.ajax({
             async: true,
             type: 'GET',
-            url: '/Home/GetEmploye',
+            url: '/Employe/GetEmploye',
             datatype: 'JSON',
             contentType: 'application/json, charset=utf-8',
             success: function (response) {
                 console.log(response)
+                var BindEmploye = "";
                 if (response.success) {
-                    $.each(response.data, function (index, value) {
-                        BindEmploye = '<tr><td>' +
-                            value.Id +
-                            '</td><td>' +
-                            value.Name +
-                            '</td><td>' +
-                            value.Email +
-                            '</td><td>'+
-                            value.Age +                           
-                            '</td><td>' +
-                            '<input type="Button" value="edit " onclick="EditEmploye(' + value.EmployeId + ')">||<input type="Button" value="delete " onclick="deleteEmploye(' + value.EmployeId + ')">' +
-                            '</td></tr>';
+                    $.each(response, function (index, value) {
+                        BindEmploye += "<tr><td>" + value.Id + "</td><td>" + value.Name + "</td><td>" + value.Email + "</td><td>" + value.Age + "</td><td>" + value.Age + "</td><td>" + '<input type="Button" value="edit " onclick="EditEmploye(' + value.EmployeId + ')">||<input type="Button" value="delete " onclick="deleteEmploye(' + value.EmployeId + ')">' +"</td></tr>" 
+                           
                     });
                     $("#tblLoad").append(BindEmploye);
                 }
@@ -91,10 +83,8 @@
     <thead>
         <tr>
             <th>Id</th>
-
             <th>Name</th>
             <th>Eamil</th>
-
             <th>Age</th>
 
             <th>Actions</th>
