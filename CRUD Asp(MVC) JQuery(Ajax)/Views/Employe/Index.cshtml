@@ -50,7 +50,7 @@
 
 
     function LoadEmploye() {
-        var BindEmploye = "";
+        $("#tblLoad").html('');
         $.ajax({
             async: true,
             type: 'GET',
@@ -58,6 +58,7 @@
             datatype: 'JSON',
             contentType: 'application/json, charset=utf-8',
             success: function (response) {
+                console.log(response)
                 if (response.success) {
                     $.each(response.data, function (index, value) {
                         BindEmploye = '<tr><td>' +
@@ -72,11 +73,11 @@
                             '<input type="Button" value="edit " onclick="EditEmploye(' + value.EmployeId + ')">||<input type="Button" value="delete " onclick="deleteEmploye(' + value.EmployeId + ')">' +
                             '</td></tr>';
                     });
-                    $("#myTable").append(BindEmploye);
+                    $("#tblLoad").append(BindEmploye);
                 }
             },
-            error: function () {
-                alert('There is some error occur')
+            error: function (response) {
+                $("#tblLoad").html('');
             }
         })
     }
@@ -99,6 +100,9 @@
             <th>Actions</th>
         </tr>
     </thead>
+    <tbody id="tblLoad">
+
+    </tbody>
 </table>
 <input type="hidden" value="0" id="textEmployeId" />
 <br />
