@@ -20,8 +20,8 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
         [HttpGet]
         public JsonResult GetEmploye()
         {
-            var employe = DB.Employes.ToList();
-            return Json(new { Success = true, data = employe }, JsonRequestBehavior.AllowGet);
+            //var employe = DB.Employes.ToList();
+            return Json(DB.Employes.ToList(), JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult AddUpdateEmploye(ViewModelEmploye view)
