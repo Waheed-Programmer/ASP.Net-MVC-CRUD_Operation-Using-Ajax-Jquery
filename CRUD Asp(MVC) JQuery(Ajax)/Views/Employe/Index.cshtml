@@ -49,43 +49,58 @@
             async: true,
             type: 'GET',
             url: '/Employe/EditEmploye',
-            data: { employeId:Id },
+            data: { employeId: Id },
             datatype: 'JSON',
             contentType: 'application/json, charset=utf-8',
             success: function (data) {
-               
-                    //$("#textEmployeId").val(data.Id);
-                    $("#textName").val(data.Name);
-                    $("#textEmail").val(data.Email);
-                    $("#textAge").val(data.Age);
-                    $("#textEmployeId").val(Id);
-                    $("#btnsave").val("Update Employe")
-
-
-
-
-
-
+                $("#textName").val(data.Name);
+                $("#textEmail").val(data.Email);
+                $("#textAge").val(data.Age);
+                $("#textEmployeId").val(Id);
+                $("#btnsave").val("Update Employe");
             },
             error: function (error) {
                 alert("There are sum error here")
             }
-
-        })
+        });
     }
 
-    function deleteEmploye(EmployeId) {
+    function DeleteEmploye(Id) {
+
+        var employId = { employeId: Id };
+        confirm("Are you sure to want to delete ");
+        $.ajax({
+            async: true,
+            type: 'POST',
+            url: '/Employe/DeleteEmploye',
+            data: JSON.stringify(employId),
+            datatype: 'JSON',
+            contentType: 'application/json, charset=utf-8',
+            success: function (data) {
+                if (data.Success){
+
+                    alert(data.Message);
+                    LoadEmploye();
+                }
+                else {
+                    alert(data.Message);
+                }           
+
+        },
+            error: function (error) {
+                alert("There are sum error here")
+            }
+            
+        })
 
     }
 
     function resetEmploye() {
-        $("#textEmployeId").val("")
-        $("#textName").val("")
-        $("#textEmail").val("")
-        $("#textAge").val("")
-        $("#btnsave").val("Add Employe")
-
-
+        $("#textEmployeId").val("");
+        $("#textName").val("");
+        $("#textEmail").val("");
+        $("#textAge").val("");
+        $("#btnsave").val("Add Employe");
     }
 
 
@@ -105,25 +120,18 @@
                         "<td>" + value.Id + "</td>" +
                         "<td>" + value.Name + "</td>" +
                         "<td>" + value.Email + "</td>" +
-
                         "<td>" + value.Age + "</td>" +
                         "<td>" + '<input type="Button" cl value="edit " onclick="EditEmploye(' + value.Id + ')"></td>' +
                         "<td>" + '<input type="Button" value="delete " onclick="DeleteEmploye(' + value.Id + ')"></td>' +
                         "</tr>";
                     SetData.append(Data);
-                    //window.location.reload(Data);
-                    //$('#dataTable').load(StudentList);
-                    // refresh every 10000 milliseconds
-
-
-
                 });
 
             },
             error: function (response) {
                 alert("Some data error");
             }
-        })
+        });
     }
 
 
@@ -153,8 +161,7 @@
 
         <td>
             <input type="button" id="btnsave" class="btn btn-primary mt-2" value="Add Employe" onclick="AddEmploye()" />
-            @*<input type="button" id="btnupdate" class="btn btn-success mt-2" value="Edit Employe" onclick="EditEmploye()" />*@
-
+           
             <input type="button" class="btn btn-success mt-2" value="Reset" onclick="resetEmploye()" />
         </td>
 
@@ -171,7 +178,6 @@
             <th>Name</th>
             <th>Eamil</th>
             <th>Age</th>
-
             <th>Edit</th>
             <th>Delete</th>
 
@@ -181,9 +187,8 @@
     </tbody>
 </table>
 <input type="hidden" value="0" id="textEmployeId" />
-<br />
-<br />
-<br />
+
+
 
 
 
