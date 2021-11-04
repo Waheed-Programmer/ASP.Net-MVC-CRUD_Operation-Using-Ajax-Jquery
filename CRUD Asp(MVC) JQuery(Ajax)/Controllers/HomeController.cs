@@ -34,27 +34,5 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
                            ).ToList();
             return Json(new { Success = true, data = employe }, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        //public JsonResult AddUpdateEmploye(ViewModelEmploye view)
-        //{
-        //    string Message = "Data has been updated";
-        //    //EmployeTable objEmploye = new EmployeTable();
-        //    EmployeTable objEmploye = DB.EmployeTables.SingleOrDefault(model => model.EmoloyeId == view.EmoloyeId) ?? new EmployeTable();
-        //    objEmploye.EmoloyeId = view.EmoloyeId;
-        //    objEmploye.Name = view.Name;
-        //    objEmploye.Age = view.Age;
-        //    objEmploye.CityId = view.CityId;
-
-        //    if (objEmploye.EmoloyeId == 0)
-        //    {
-        //        Message = "Data has been Inserted";
-        //        DB.EmployeTables.Add(objEmploye);
-        //        DB.SaveChanges();
-        //    }
-
-
-        //    return Json(new {Success=true,Message=Message }, JsonRequestBehavior.AllowGet);
-        //}
-
-    } }
+       }
 }

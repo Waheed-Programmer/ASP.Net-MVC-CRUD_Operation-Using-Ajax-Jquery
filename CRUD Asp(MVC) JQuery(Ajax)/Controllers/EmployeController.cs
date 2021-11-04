@@ -28,7 +28,7 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
         {
             string Message = "Data has been updated";
             //Employe e = new Employe();
-             Employe e = DB.Employes.SingleOrDefault(model => model.Id == view.Id) ?? new Employe();
+            Employe e = DB.Employes.SingleOrDefault(model => model.Id == view.Id) ?? new Employe();
             e.Id = view.Id;
             e.Name = view.Name;
             e.Age = view.Age;
@@ -44,6 +44,15 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
         public JsonResult EditEmploye(int employeId)
         {
             return Json(DB.Employes.SingleOrDefault(model => model.Id == employeId), JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult DeleteEmploye(int employeId)
+        {
+            Employe emp = DB.Employes.Single(model => model.Id == employeId);
+            DB.Employes.Remove(emp);
+            DB.SaveChanges();
+            return Json(new { Success = true, Message = "Data Sucessfully Deleted" }, JsonRequestBehavior.AllowGet);
+
         }
     }
 }
