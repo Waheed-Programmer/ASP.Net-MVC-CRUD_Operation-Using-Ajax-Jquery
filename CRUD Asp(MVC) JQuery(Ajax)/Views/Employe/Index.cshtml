@@ -125,7 +125,11 @@
                         "<td>" + '<input type="Button" class="btn btn-danger" value="Delete " onclick="DeleteEmploye(' + value.Id + ')"></td>' +
                         "</tr>";
                     SetData.append(Data);
+                 
+                  
                 });
+              
+
             },
             error: function (StudentList) {
                 alert("Some data error");
@@ -138,10 +142,7 @@
 <br />
 <br />
 <table class="table table-striped table-responsive" id="myTable">
-
-
     <tr>
-
         <td>
 
             <input type="text" class="form-control" placeholder="Enter Name" name="Name" id="textName" />
