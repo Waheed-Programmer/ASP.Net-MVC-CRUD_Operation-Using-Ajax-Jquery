@@ -121,14 +121,13 @@
                         "<td>" + value.Name + "</td>" +
                         "<td>" + value.Email + "</td>" +
                         "<td>" + value.Age + "</td>" +
-                        "<td>" + '<input type="Button" cl value="edit " onclick="EditEmploye(' + value.Id + ')"></td>' +
-                        "<td>" + '<input type="Button" value="delete " onclick="DeleteEmploye(' + value.Id + ')"></td>' +
+                        "<td>" + '<input type="Button" class="btn btn-primary" value="Edit " onclick="EditEmploye(' + value.Id + ')"></td>' +
+                        "<td>" + '<input type="Button" class="btn btn-danger" value="Delete " onclick="DeleteEmploye(' + value.Id + ')"></td>' +
                         "</tr>";
                     SetData.append(Data);
                 });
-
             },
-            error: function (response) {
+            error: function (StudentList) {
                 alert("Some data error");
             }
         });
