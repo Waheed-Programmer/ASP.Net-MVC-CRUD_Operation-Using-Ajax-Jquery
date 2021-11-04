@@ -27,7 +27,8 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
         public JsonResult AddUpdateEmploye(ViewModelEmploye view)
         {
             string Message = "Data has been updated";
-            Employe e = new Employe();
+            //Employe e = new Employe();
+             Employe e = DB.Employes.SingleOrDefault(model => model.Id == view.Id) ?? new Employe();
             e.Id = view.Id;
             e.Name = view.Name;
             e.Age = view.Age;
@@ -39,6 +40,10 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
                 DB.SaveChanges();
             }
             return Json(new { Success = true, Message = Message }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult EditEmploye(int employeId)
+        {
+            return Json(DB.Employes.SingleOrDefault(model => model.Id == employeId), JsonRequestBehavior.AllowGet);
         }
     }
 }
