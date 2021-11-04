@@ -50,26 +50,35 @@
 
 
     function LoadEmploye() {
-        $("#tblLoad").html('');
+        //$("#SetStudentList").html('');
         $.ajax({
             async: true,
             type: 'GET',
             url: '/Employe/GetEmploye',
             datatype: 'JSON',
             contentType: 'application/json, charset=utf-8',
-            success: function (response) {
-                console.log(response)
-                var BindEmploye = "";
-                if (response.success) {
-                    $.each(response, function (index, value) {
-                        BindEmploye += "<tr><td>" + value.Id + "</td><td>" + value.Name + "</td><td>" + value.Email + "</td><td>" + value.Age + "</td><td>" + value.Age + "</td><td>" + '<input type="Button" value="edit " onclick="EditEmploye(' + value.EmployeId + ')">||<input type="Button" value="delete " onclick="deleteEmploye(' + value.EmployeId + ')">' + "</td></tr>"; 
-                           
-                    });
-                    $("#tblLoad").append(BindEmploye);
-                }
+            success: function (StudentList) {
+                console.log(StudentList)
+                var SetData = $("#SetStudentList");
+                $.each(StudentList, function (index, value) {
+                    var Data = "<tr class='row_" + value.Id + "'>" +
+                        "<td>" + value.Id + "</td>" +
+                        "<td>" + value.Name + "</td>" +
+                        "<td>" + value.Email + "</td>" +
+                       
+                        "<td>" + value.Age + "</td>" +
+                        "<td>" + "<a href='#' class='btn btn-warning' onclick='EditStudentRecord(" + value.Id + ")' ><span class='glyphicon glyphicon-edit'></span></a>" + "</td>" +
+                        "<td>" + "<a href='#' class='btn btn-danger' onclick='DeleteStudentRecord(" + value.Id + ")'><span class='glyphicon glyphicon-trash'></span></a>" + "</td>" +
+                        "</tr>";
+                    SetData.append(Data);
+                    window.reload();
+
+
+                });
+
             },
             error: function (response) {
-                $("#tblLoad").html('');
+                alert("Some data error");
             }
         })
     }
@@ -78,7 +87,7 @@
 </script>
 <br />
 <br />
-<table class="table table-striped table-responsive">
+<table class="table table-bordered table-striped table-responsive" id="dataTable">
 
     <thead>
         <tr>
@@ -87,10 +96,12 @@
             <th>Eamil</th>
             <th>Age</th>
 
-            <th>Actions</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
         </tr>
     </thead>
-    <tbody id="tblLoad">
+    <tbody id="SetStudentList">
 
     </tbody>
 </table>
