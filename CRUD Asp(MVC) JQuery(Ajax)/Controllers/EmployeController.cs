@@ -2,6 +2,7 @@
 using CRUD_Asp_MVC__JQuery_Ajax_.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -37,6 +38,12 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
             {
                 Message = "Data has been Inserted";
                 DB.Employes.Add(e);
+                DB.SaveChanges();
+            }
+            else
+            {
+                Message = "Data has been Updated";
+                DB.Entry(e).State = EntityState.Modified;
                 DB.SaveChanges();
             }
             return Json(new { Success = true, Message = Message }, JsonRequestBehavior.AllowGet);
