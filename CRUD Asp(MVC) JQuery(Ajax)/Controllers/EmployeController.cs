@@ -28,6 +28,7 @@ namespace CRUD_Asp_MVC__JQuery_Ajax_.Controllers
         public JsonResult AddUpdateEmploye(ViewModelEmploye view)
         {
             string Message = "Data has been updated";
+            
             //Employe e = new Employe();
             Employe e = DB.Employes.SingleOrDefault(model => model.Id == view.Id) ?? new Employe();
             e.Id = view.Id;

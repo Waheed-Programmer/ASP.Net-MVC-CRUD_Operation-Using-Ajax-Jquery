@@ -17,7 +17,7 @@
             Name: $("#textName").val(),
             Email: $("#textEmail").val(),
             Age: $("#textAge").val(),
-           
+
 
         }
 
@@ -59,7 +59,7 @@
                 $("#textAge").val(data.Age);
                 $("#textEmployeId").val(Id);
                 $("#btnsave").val("Update Employe");
-               
+
             },
             error: function (error) {
                 alert("There are sum error here")
@@ -79,7 +79,7 @@
             datatype: 'JSON',
             contentType: 'application/json, charset=utf-8',
             success: function (data) {
-                if (data.Success){
+                if (data.Success) {
 
                     alert(data.Message);
                     LoadEmploye();
@@ -87,13 +87,13 @@
                 }
                 else {
                     alert(data.Message);
-                }           
+                }
 
-        },
+            },
             error: function (error) {
                 alert("There are sum error here")
             }
-            
+
         })
 
     }
@@ -128,10 +128,10 @@
                         "<td>" + '<input type="Button" class="btn btn-danger" value="Delete " onclick="DeleteEmploye(' + value.Id + ')"></td>' +
                         "</tr>";
                     SetData.append(Data);
-                 
-                  
+
+
                 });
-              
+
 
             },
             error: function (StudentList) {
@@ -164,7 +164,7 @@
 
         <td>
             <input type="button" id="btnsave" class="btn btn-primary mt-2" value="Add Employe" onclick="AddEmploye()" />
-           
+
             <input type="button" class="btn btn-success mt-2" value="Reset" onclick="resetEmploye()" />
         </td>
 
@@ -192,6 +192,22 @@
 <input type="hidden" value="0" id="textEmployeId" />
 
 
+<script>
 
+        $("#btnsave").click(function () {
+
+            if ($('#textName').val() == "") {
+                swal("Please Enter Name", "", "error");
+                $('#textName').focus();
+                return (false);
+            }
+            else if ($('#InstructorPassword').val() == "") {
+                swal("Please Enter Instructor Password", "", "error")
+                $('#InstructorPassword').focus();
+                return (false);
+            }
+
+        });
+    </script>
 
 
