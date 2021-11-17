@@ -12,38 +12,45 @@
     });
 
     function AddEmploye() {
-        ViewModelEmploye = {
-            Id: $("#textEmployeId").val(),
-            Name: $("#textName").val(),
-            Email: $("#textEmail").val(),
-            Age: $("#textAge").val(),
+
+        if ($('#txtName').val() == "" ||
+            $('#textEmail').val() == "" ||
+            $('#textAge').val() == ""){
+            alert("Please Fill all fields", "", "error");
+
+        } else {
+            ViewModelEmploye = {
+                Id: $("#textEmployeId").val(),
+                Name: $("#textName").val(),
+                Email: $("#textEmail").val(),
+                Age: $("#textAge").val(),
 
 
-        }
-
-        $.ajax({
-            async: true,
-            type: 'POST',
-            url: '/Employe/AddUpdateEmploye',
-            data: JSON.stringify(ViewModelEmploye),
-            datatype: 'JSON',
-            contentType: 'application/json, charset=utf-8',
-            success: function (data) {
-                if (data.Success) {
-                    $("#btnupdate").hide();
-                    alert(data.Message);
-                    LoadEmploye();
-                    resetEmploye();
-                    window.location = 'Index';
-
-                }
-
-            },
-            error: function (error) {
-                alert("There are sum error here")
             }
 
-        })
+            $.ajax({
+                async: true,
+                type: 'POST',
+                url: '/Employe/AddUpdateEmploye',
+                data: JSON.stringify(ViewModelEmploye),
+                datatype: 'JSON',
+                contentType: 'application/json, charset=utf-8',
+                success: function (data) {
+                    if (data.Success) {
+                        $("#btnupdate").hide();
+                        alert(data.Message);
+                        LoadEmploye();
+                        resetEmploye();
+                        window.location = 'Index';
+                    }
+
+                },
+                error: function (error) {
+                    alert("There are sum error here")
+                }
+
+            })
+        }
     }
     function EditEmploye(Id) {
         $.ajax({
@@ -192,7 +199,7 @@
 <input type="hidden" value="0" id="textEmployeId" />
 
 
-<script>
+@*<script>
 
         $("#btnsave").click(function () {
 
@@ -213,6 +220,6 @@
             }
 
         });
-    </script>
+    </script>*@
 
 
