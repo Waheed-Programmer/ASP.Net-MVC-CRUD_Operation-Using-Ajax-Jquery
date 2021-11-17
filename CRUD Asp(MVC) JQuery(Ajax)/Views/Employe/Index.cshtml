@@ -197,13 +197,18 @@
         $("#btnsave").click(function () {
 
             if ($('#textName').val() == "") {
-                swal("Please Enter Name", "", "error");
+                alert("Please Enter Name", "", "error");
                 $('#textName').focus();
                 return (false);
             }
-            else if ($('#InstructorPassword').val() == "") {
-                swal("Please Enter Instructor Password", "", "error")
-                $('#InstructorPassword').focus();
+            else if ($('#textEmail').val() == "") {
+                alert("Please Enter Email", "", "error")
+                $('#textEmail').focus();
+                return (false);
+            }
+            else if ($('#textAge').val() == "") {
+                alert("Please Enter Age", "", "error")
+                $('#textAge').focus();
                 return (false);
             }
 
